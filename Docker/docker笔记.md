@@ -151,7 +151,10 @@ docker run --help   //帮助命令
 docker run  -it mysql:5.7.41 /bin/bash   //新建并启动容器
 docker exec -it mysql /bin/bash   //进入已运行的容器
 docker logs -f docker-mongo  //查看容器日志信息
-service docker start   //启动docker命令
+docker ps -a   //显示所有的容器，包括未运行的。
+docker start [OPTIONS] CONTAINER [CONTAINER...]   //启动一个或多个已经被停止的容器。
+docker stop [OPTIONS] CONTAINER [CONTAINER...]   //停止一个运行中的容器。
+docker restart [OPTIONS] CONTAINER [CONTAINER...]   //重启容器。
 cat /proc/version   //查看Linux版本
 docker version   //查看docker版本
 ```
@@ -171,6 +174,7 @@ bash-4.2# cp .bashrc /root/
 bash-4.2# exit
 exit
 ```
+
 ```bash
 //启动docker
 sudo service docker start
