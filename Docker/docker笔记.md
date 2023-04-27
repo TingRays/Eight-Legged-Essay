@@ -116,7 +116,7 @@ daemonize no
 ## Hyperf
 
 ```bash
-docker run --name hyperf -v /home/aaron/docker/hyperf/project:/data/project -p 9501:9501 -it --restart=always --net lanNet -d --privileged -u root --entrypoint /bin/bash hyperf/hyperf:latest
+docker run --name hyperf -v /home/aaron/docker/hyperf/project:/data/project -p 9501:9501 -it --restart=always --net lanNet -d --privileged -u root hyperf/hyperf:latest php /data/project/hyperf/bin/hyperf.php start
 ```
 
 ```bash
@@ -157,6 +157,7 @@ docker stop [OPTIONS] CONTAINER [CONTAINER...]   //停止一个运行中的容�
 docker restart [OPTIONS] CONTAINER [CONTAINER...]   //重启容器。
 cat /proc/version   //查看Linux版本
 docker version   //查看docker版本
+
 ```
 
 ```bash
