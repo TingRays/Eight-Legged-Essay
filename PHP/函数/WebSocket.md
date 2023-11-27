@@ -10,7 +10,7 @@ Origin: http://example.com
 Sec-WebSocket-Protocol: chat, superchat
 Sec-WebSocket-Version: 13
 ```
-![socket 套接字的建立](../resources/img/25124523-33fc2253152447d4a16bac3b6704d832.jpg)
+![socket 套接字的建立](../../resources/img/25124523-33fc2253152447d4a16bac3b6704d832.jpg)
 
 ```php
 // 建立一个 socket 套接字
