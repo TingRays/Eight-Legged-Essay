@@ -2,10 +2,12 @@ PHP自5.0版本以后添加了反射机制，它提供了一套强大的反射AP
 如其名，反射是（从镜子里）照出自身。我们写代码，告诉代码怎么运行，事件发生在编译期。代码运行期间，代码如何知道自己的结构以及能力呢？反射机制能够使代码感知自身结构，并可（部分）改变运行行为。
 
 ### 参考文档
+
 https://www.php.net/manual/zh/book.reflection.php
 https://www.php.net/manual/zh/class.reflection.php
 
 ```不管类中定义的成员权限声明是否为public，都可以获取到。```
+
 ```php
 <?php 
 namespace Extend;
@@ -77,7 +79,9 @@ $namespace = $class->getNamespaceName();  // 获取类的命名空间
 $comment_class = $class->getDocComment();  // 获取User类的注释文档，即定义在类之前的注释
 $comment_method = $class->getMethod('getUsername')->getDocComment();  // 获取User类中getUsername方法的注释文档
 ```
+
 一旦创建了反射类的实例，我们不仅可以通过反射类访问原来类的方法和属性，还能创建原来类的实例或则直接调用类里面的方法。
+
 ```php
 $class = new ReflectionClass('Extend\User');  // 将类名User作为参数，即可建立User类的反射类
 $instance = $class->newInstance('youyou', 1, '***');  // 创建User类的实例
@@ -106,7 +110,9 @@ try {
     $value = $instance->password;   // 不能执行，类本身的属性没有被修改，仍然是private
 }catch(Exception $e){echo $e;}
 ```
+
 #### 注意事项
+
 1. 直接访问 protected 或则 private 的熟悉或者方法会抛出异常
 2. 需要调用指定的 ReflectionProperty 或则 ReflectionMethod 对象 setAccessible(true)方法才能访问非公有成员
 3. 修改非公有成员的访问权限只作用于当前的反射类的实例

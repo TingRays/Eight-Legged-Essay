@@ -43,7 +43,7 @@ IoC容器注入应用程序某个对象，应用程序依赖的对象
 /**
  * 没有IoC/DI的时候，常规的A类使用C类的示例
  */
- 
+
 /**
  * Class c
  */
@@ -54,7 +54,7 @@ class c
         echo 'hello';
     }
 }
- 
+
 /**
  * Class a
  */
@@ -65,13 +65,13 @@ class a
     {
         $this->c = new C(); // 实例化创建C类
     }
- 
+
     public function sayC()
     {
         echo $this->c->say(); // 调用C类中的方法
     }
 }
- 
+
 $a = new a();
 $a->sayC(); 
 
@@ -80,18 +80,18 @@ $a->sayC();
 /**
  * 当有IoC/DI的容器后,a类依赖c实例注入的示例
  */
- 
+
 /**
  * Class c
  */
 class c {
- 
+
     public function say()
     {
         echo 'hello';
     }
 }
- 
+
 /**
  * Class a
  */
@@ -100,12 +100,12 @@ class a {
     public function setC(C $c) {
         $this->c = $c; // 实例化创建C类
     }
- 
+
     public function sayC(){
         echo $this->c->say(); // 调用C类中的方法
     }
 }
- 
+
 $c = new C();
 $a = new a();
 $a->setC($c);
@@ -120,7 +120,7 @@ interface log
 {
     public function write();  
 }
- 
+
 // 文件记录日志
 class FileLog implements Log
 {
@@ -128,7 +128,7 @@ class FileLog implements Log
         echo 'file log write...';
     }  
 }
- 
+
 // 数据库记录日志
 class DatabaseLog implements Log
 {
@@ -136,48 +136,47 @@ class DatabaseLog implements Log
         echo 'database log write...';
     }  
 }
- 
+
 // 程序操作类  没有控制反转
 class User
 {
     protected $fileLog;
- 
+
     public function __construct()
     {
         $this->fileLog = new FileLog();  
     }
- 
+
     public function login()
     {
         // 登录成功，记录登录日志
         echo 'login success...';
         $this->fileLog->write();
     }
- 
+
 }
- 
+
 $user = new User();
 $user->login();
 // 通过构造函数参数传递就实现，这就是“控制反转”。不需要自己内容修改，改成由外部外部传递。这种由外部负责其依赖需求的行为，我们可以称其为 “控制反转（IoC）”。
 class User
 {
     protected $log;
- 
+
     public function __construct(Log $log)
     {
         $this->log = $log;  
     }
- 
+
     public function login()
     {
         // 登录成功，记录登录日志
         echo 'login success...';
         $this->log->write();
     }
- 
+
 }
- 
+
 $user = new User(new DatabaseLog());
 $user->login();
 ```
-
