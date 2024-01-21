@@ -1,5 +1,7 @@
 ## 一、php 中处理 websocket
+
 WebSocket 连接是由客户端主动发起的，所以一切要从客户端出发。第一步是要解析拿到客户端发过来的 Sec-WebSocket-Key 字符串。
+
 ```markdown
 GET /chat HTTP/1.1
 Host: server.example.com
@@ -10,7 +12,8 @@ Origin: http://example.com
 Sec-WebSocket-Protocol: chat, superchat
 Sec-WebSocket-Version: 13
 ```
-![socket 套接字的建立](../resources/img/25124523-33fc2253152447d4a16bac3b6704d832.jpg)
+
+![socket 套接字的建立](../../resources/img/25124523-33fc2253152447d4a16bac3b6704d832.jpg)
 
 ```php
 // 建立一个 socket 套接字
@@ -19,7 +22,9 @@ socket_set_option($master, SOL_SOCKET, SO_REUSEADDR, 1);
 socket_bind($master, $address, $port);
 socket_listen($master);
 ```
+
 上面几行代码并未建立连接，只不过这些代码是建立一个 socket 套接字必须要写的东西
+
 ```php
 //demo.php
 Class WS {
@@ -81,7 +86,9 @@ Class WS {
     }
 }
 ```
+
 #### 提取 Sec-WebSocket-Key 信息
+
 ```php
 function getKey($req) {
     $key = null;
@@ -93,6 +100,7 @@ function getKey($req) {
 ```
 
 #### 加密 Sec-WebSocket-Key
+
 ```php
 function encry($req){
     $key = $this->getKey($req);
@@ -103,6 +111,7 @@ function encry($req){
 ```
 
 #### 应答 Sec-WebSocket-Accept
+
 ```php
 function dohandshake($socket, $req){
     // 获取加密key
