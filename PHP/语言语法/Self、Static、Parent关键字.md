@@ -1,5 +1,5 @@
 1. 静态属性与方法可以在不实例化类的情况下调用，直接使用`类名::方法名`的方式进行调用。静态属性**不允许**对象使用->操作符调用。
-
+   
    > ```
    > 1.非静态方法可以调用静态方法，静态方法不可以调用非静态方法
    > 2.静态方法是属于类的，即静态方法是随着类的加载而加载的，在加载类时，程序就会为静态方法分配内存。
@@ -13,7 +13,7 @@
 <?php
 class Car {
     public $speed = 0; //汽车的起始速度是0
-    
+
     public function speedUp() {
         $this->speed += 10;
         return $this->speed;
@@ -25,7 +25,7 @@ class Truck extends Car{
         $this->speed = parent::speedUp()+50;//只是覆盖上面的方法而已
     }
 }
- 
+
 $car = new Truck();
 $car->speedUp();
 echo $car->speed;//答案60
@@ -161,19 +161,19 @@ class A {
     public static function foo() {
         static::who();
     }
- 
+
     public static function who() {
         echo __CLASS__."\n";
     }
 }
- 
+
 class B extends A {
     public static function test() {
         A::foo();
         parent::foo();
         self::foo();
     }
- 
+
     public static function who() {
         echo __CLASS__."\n";
     }
@@ -183,7 +183,7 @@ class C extends B {
         echo __CLASS__."\n";
     }
 }
- 
+
 C::test();
 ?> 
 ```
@@ -191,7 +191,5 @@ C::test();
 1. `A::foo();`这个语句是可以在任何地方执行的，它表示使用A去调用静态方法foo()得到’A’，然后直接调用A里面的who()方法。
 2. `parent::foo();`C的parent是B，B的parent是A，回溯找到了A的foo方法；`static::who();`语句中的static::调用的方法会被子类覆盖，所以优先调用C的who()方法，如果C的who方法不存在会调用B的who方法，如果B的who方法不存在会调用A的who方法。所以，输出结果是’C’。优先级c->b
 3. `self::foo();`这个self::是在B中使用的，所以self::等价于B::，但是B没有实现foo方法，B又继承自A，所以我们实际上调用了A::foo()这个方法。foo方法使用了static::who()语句，导致我们又调用了C的who函数。
-
-
 
 原文地址：https://blog.csdn.net/qq_38588845/article/details/81187551
