@@ -1,11 +1,12 @@
-####  配置示例
+#### 配置示例
 
 > 重点在于`ssl`的配置，和`路由重新`。当然也可以根据需求不用重写路由。`http`和`https`都能访问，不强跳`https`
+
 ```nginx
 server {
       listen 443 ssl;
       server_name fxt.baidu.com;
-      
+
       root /www/projects/baidu/fxt.baidu.com;
       index index.html index.htm index.php;
 
@@ -22,7 +23,7 @@ server {
 
       add_header X-Content-Type-Options nosniff;
       add_header X-XSS-Protection "1; mode=block";
-      
+
 
       location = /favicon.ico { access_log off; log_not_found off; }
       location = /robots.txt  { access_log off; log_not_found off; }

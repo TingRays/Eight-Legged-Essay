@@ -142,5 +142,3 @@ location /proxy {
 在第一个代理服务器上（`nginx proxy1`）用`$remote_addr`来覆盖`X-Forwarded-For`，用真实客户端`IP`过滤掉或覆盖伪造的`IP`。
 
 此时`$X-Forwarded-For`获取的第一个`IP`为真实客户端`IP`。
-
-

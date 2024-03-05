@@ -9,7 +9,6 @@ extract — 从数组中将变量导入到当前的符号表
 > **警告** 不要对不可信的数据使用 **extract()**，类似用户输入（例如 [$_GET](https://www.php.net/manual/zh/reserved.variables.get.php)、[$_FILES](https://www.php.net/manual/zh/reserved.variables.files.php)）。
 
 ```php
-
 <?php
 
 /* 假定 $var_array 是 wddx_deserialize 返回的数组*/
@@ -21,8 +20,4 @@ extract($var_array, EXTR_PREFIX_SAME, "wddx");
 echo "$color, $size, $shape, $wddx_size";
 
 ?>
-
-
 ```
-
-
